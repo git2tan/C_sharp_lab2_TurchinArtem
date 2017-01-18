@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace C_sharp_lab2_TurchinArtem
 {
-    class Program
+    class Car
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }
