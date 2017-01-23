@@ -37,11 +37,11 @@ namespace C_sharp_lab2_TurchinArtem
         public void ShowCars()
         {
             int indx = 0;
-            foreach(var each in cars)
+            foreach (var each in cars)
             {
-                Console.WriteLine("[{0}] - {1}",indx,each.ToStringWithoutRepDates());
+                Console.WriteLine("[{0}] - {1}", indx, each.ToStringWithoutRepDates());
             }
         }
-    }
+    }  
 
 }

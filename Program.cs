@@ -24,17 +24,8 @@ namespace C_sharp_lab2_TurchinArtem
             myCar.RemoveRepairDate(2);
             Console.WriteLine(myCar);
             Console.ReadKey();
-            bool isExit = false;
-            {
-                int choise=100;
-                try
-                {
-                    choise = int.Parse(Console.ReadLine());
-                }
-                catch { }
-
-            }
-            //Console.ReadKey();
+            
+            GUI.work();
         }
     }
 }
