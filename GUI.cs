@@ -52,7 +52,6 @@ namespace C_sharp_lab2_TurchinArtem
                         Console.WriteLine("Неправильный пункт меню");
                         System.Threading.Thread.Sleep(500); break;
                 }
-
             }
         }
 
@@ -67,12 +66,10 @@ namespace C_sharp_lab2_TurchinArtem
                 Console.WriteLine("[" + i + "] - " + each.ToStringWithoutRepDates());
                 i++;
             }
-            if (i==0)
+            if (i == 0)
             {
                 Console.WriteLine("Гараж пустой.");
             }
-            //System.Threading.Thread.Sleep(3000);
-            //Console.ReadKey();
         }
         public static void ShowAllAboutOneCar()
         {
@@ -80,7 +77,6 @@ namespace C_sharp_lab2_TurchinArtem
             Console.WriteLine("Введите номер автомобиля о котором вы хотите узнать подробности.");
             int indx = int.Parse(Console.ReadLine());
             Console.WriteLine(garage[indx]);
-            //System.Threading.Thread.Sleep(3000);
             Console.ReadKey();
         }
         public static void AutoFillGarage()
@@ -93,8 +89,8 @@ namespace C_sharp_lab2_TurchinArtem
                 Random realRnd = new Random();
                 for (; count > 0; count--)
                 {
-                    Car tmpCar = new Car((Marks)realRnd.Next(4), realRnd.Next(75, 350), realRnd.Next(500000, 3000000) + realRnd.NextDouble());
-                    garage.Add(tmpCar);
+                    //Car tmpCar = new Car((Marks)realRnd.Next(4), realRnd.Next(75, 350), realRnd.Next(500000, 3000000) + realRnd.NextDouble());
+                    //garage.Add(tmpCar);
                 }
                 Console.WriteLine("Гараж заполнен!");
                 System.Threading.Thread.Sleep(1000);

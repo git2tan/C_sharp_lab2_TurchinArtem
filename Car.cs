@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace C_sharp_lab2_TurchinArtem
 {
-    class Car:ITuningable
+    abstract class Car:ITuningable
     {
-        private Marks marka;
-        private int power;
-        private double price;
-        private List<DateOfRepair> listOfRepairsDate= new List<DateOfRepair>();
+        private Marks marka;    //марка авто (перечислитель)
+        private int power;      //мощность авто
+        private double price;   //цена авто
+        private List<DateOfRepair> listOfRepairsDate= new List<DateOfRepair>(); //список проводивщихся ремонтов и соотв дат
         //Конструкторы
-        public Car()
+        public Car()    //без параметров, по умолчанию
         {
             marka = Marks.toyota;
             power = 100;
-            price = 320020;
+            price = 320020;     //цену установим как 320020
         }
         public Car(Marks marka, int power, double price)
         {
@@ -46,7 +43,20 @@ namespace C_sharp_lab2_TurchinArtem
             set { listOfRepairsDate = value; }
             get { return listOfRepairsDate; }
         }
+        //Индексатор
+        public DateOfRepair this[int i] //ReadOnly!!!
+        {
+            get
+            {
+                if (i >= 0 && listOfRepairsDate.Count > 0)
+                    return listOfRepairsDate[i];
+                else
+                    return null;
+            }
+        }
         //пользовательские методы
+        abstract public void DriveOneMile(Car car);
+        abstract public double Acceleration();
         public void RepairNow(string works, int cost)
         {
             DateOfRepair tmpDateOfRepair = new DateOfRepair(DateTime.Now,works, cost);
@@ -76,7 +86,6 @@ namespace C_sharp_lab2_TurchinArtem
         public override string ToString()
         {
             string s = String.Format("[марка: {0}], [мощность: {1}л.с], [цена: {2:N} руб].\nДаты ремонта:", marka, power, price);
-            //s = s + "[Марка - " + marka + "], [мощность - " + power + "л.с.], [цена - " + price + "руб].\nДаты ремонта:";
 
             if (listOfRepairsDate.Count > 0)
             {
@@ -94,7 +103,7 @@ namespace C_sharp_lab2_TurchinArtem
             }
             return s;
         }
-        public string ToStringWithoutRepDates()
+        public virtual string ToStringWithoutRepDates()
         {
             string s;
             s = String.Format("[марка: {0}], [мощность: {1}л.с], [цена: {2:N} руб].", marka, power, price);
@@ -102,10 +111,11 @@ namespace C_sharp_lab2_TurchinArtem
         }
         public void Tuning(int increaseEnginByPercent, int price)
         {
+            if (increaseEnginByPercent > 100)
+                throw new TuningException("Нельзя увеличить базовую мощность более чем на 100%!!!");
             int deltaPower = power * increaseEnginByPercent / 100;
             power = power + deltaPower;
             string s = String.Format("Мощность двиг-ля увел. с {0}л.с на {1}л.с. до {2}л.с.!", this.Power, deltaPower, power);
-            //this.Price += price;
             listOfRepairsDate.Add(new DateOfRepair(DateTime.Now, s, price));
         }
     }

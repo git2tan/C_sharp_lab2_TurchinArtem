@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace C_sharp_lab2_TurchinArtem
 {
@@ -10,22 +6,23 @@ namespace C_sharp_lab2_TurchinArtem
     {
         static void Main(string[] args)
         {
-            Car myCar = new Car(Marks.bentley, 500, 10000000);
-            Console.WriteLine(myCar);
-            Console.Write("\n");
-            myCar.RepairNow("перегретый двигатель", 1000000);
-            myCar.RepairByDate(new DateTime(2016, 09, 01, 18, 25, 11), "Замена масла", 70000);
-            Console.WriteLine(myCar);
-            Console.Write("\nПосле Тюнинга:\n");
-            myCar.Tuning(20, 1500000);
-            myCar.RepairNow("Замена масла и колодок", 50000);
-            Console.WriteLine(myCar);
-            Console.WriteLine("Стер 2 запись о ремонте...");
-            myCar.RemoveRepairDate(2);
-            Console.WriteLine(myCar);
-            Console.ReadKey();
+            CargoCar myCargoCar = new CargoCar();
+            myCargoCar.RepairNow("ремонт подвески", 12000);
+            Console.WriteLine(myCargoCar);
+            CargoCar myCargoCarBentley = new CargoCar(Marks.bentley,450,9000000,0.15);
+            Console.WriteLine("-------------------");
+            Console.WriteLine(myCargoCarBentley);
             
-            GUI.work();
+            myCargoCarBentley.ShowLikeImage();
+            myCargoCarBentley.ShowLikeText();
+            Console.WriteLine("-------------------");
+            Console.WriteLine(myCargoCar);
+            myCargoCar.ShowLikeImage();
+            myCargoCar.ShowLikeText();
+
+            myCargoCar.DriveOneMile(myCargoCarBentley);
+            Console.ReadKey();
+            //GUI.work();
         }
     }
 }
